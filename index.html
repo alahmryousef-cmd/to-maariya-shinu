@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAARIYA SHINU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(160deg, #f4f1fb 0%, #ece7f8 40%, #e4ddf4 70%, #dcd2f0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* خلفية زخرفية ناعمة وهادئة */
+        .bg-decoration {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: blob-float 16s ease-in-out infinite;
+        }
+        
+        .blob:nth-child(1) {
+            width: 340px;
+            height: 340px;
+            background: #c4b5fd;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .blob:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: #bae6fd;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+        
+        .blob:nth-child(3) {
+            width: 240px;
+            height: 240px;
+            background: #ddd6fe;
+            top: 50%;
+            right: 5%;
+            animation-delay: 9s;
+        }
+        
+        .blob:nth-child(4) {
+            width: 220px;
+            height: 220px;
+            background: #bfdbfe;
+            bottom: 10%;
+            left: 0%;
+            animation-delay: 7s;
+        }
+        
+        @keyframes blob-float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(25px, -25px) scale(1.05);
+            }
+            66% {
+                transform: translate(-15px, 15px) scale(0.97);
+            }
+        }
+        
+        /* نجوم صغيرة متلألئة */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(196, 181, 253, 0.8);
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(0.7); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        /* محتوى الوسط */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 0;
+            position: relative;
+            z-index: 5;
+        }
+        
+        /* البطاقة */
+        .profile-card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 32px;
+            padding: 80px 36px 80px;
+            text-align: center;
+            box-shadow:
+                0 20px 50px rgba(139, 92, 246, 0.12),
+                0 6px 16px rgba(96, 165, 250, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            margin: 20px 0;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: card-appear 0.8s ease;
+        }
+        
+        @keyframes card-appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 28px 60px rgba(139, 92, 246, 0.16),
+                0 10px 22px rgba(96, 165, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        
+        /* الاسم */
+        .name {
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #8b7fc7 0%, #6b78c9 50%, #6ba3d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+        }
+        
+        /* الوظيفة */
+        .title {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #9a91c2;
+            margin-bottom: 22px;
+        }
+        
+        /* خط زخرفي */
+        .divider {
+            width: 55px;
+            height: 2.5px;
+            margin: 0 auto 70px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #c4b5fd, #bae6fd);
+            position: relative;
+            opacity: 0.7;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #c4b5fd;
+            transform: translateY(-50%);
+        }
+        
+        .divider::before { right: -12px; background: #bae6fd; }
+        .divider::after  { left: -12px; }
+        
+        /* الأيقونات */
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin-top: 10px;
+        }
+        
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .icon-btn {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            background: linear-gradient(135deg, #b8a8e8, #9f8fd9);
+            box-shadow:
+                0 10px 22px rgba(159, 143, 217, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+        
+        .icon-btn.instagram {
+            background: linear-gradient(135deg, #b8a8e8, #a0aee0, #95bfe0);
+            box-shadow:
+                0 10px 22px rgba(160, 174, 224, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transition: left 0.7s;
+        }
+        
+        .icon-btn:hover::before {
+            left: 100%;
+        }
+        
+        .icon-btn:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow:
+                0 16px 30px rgba(159, 143, 217, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .icon-btn.instagram:hover {
+            box-shadow:
+                0 16px 30px rgba(160, 174, 224, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .icon-btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+        
+        .icon-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            color: #8b82b8;
+            transition: color 0.3s ease;
+        }
+        
+        .icon-container:hover .icon-label {
+            color: #7c6fc4;
+        }
+        
+        /* الفوتر */
+        .footer {
+            position: relative;
+            z-index: 10;
+            margin-top: 55px;
+            padding: 10px 18px;
+            font-size: 0.65rem;
+            color: #9a91c2;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            max-width: 90%;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        
+        .footer a {
+            color: #8b7fc7;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #6b78c9;
+            text-decoration: underline;
+        }
+        
+        /* شاشات صغيرة */
+        @media (max-width: 400px) {
+            .content-wrapper {
+                padding: 30px 0;
+            }
+            
+            .profile-card {
+                padding: 65px 26px 65px;
+                border-radius: 28px;
+                margin: 15px 0;
+            }
+            
+            .name {
+                font-size: 21px;
+                letter-spacing: 2.8px;
+                margin-bottom: 8px;
+            }
+            
+            .title {
+                font-size: 12px;
+                letter-spacing: 4px;
+                margin-bottom: 20px;
+            }
+            
+            .divider {
+                margin-bottom: 60px;
+            }
+            
+            .icon-btn {
+                width: 72px;
+                height: 72px;
+                font-size: 27px;
+                border-radius: 22px;
+            }
+            
+            .contact-icons {
+                gap: 36px;
+            }
+            
+            .footer {
+                margin-top: 45px;
+                font-size: 0.6rem;
+                padding: 8px 15px;
+            }
+        }
+        
+        @media (max-width: 340px) {
+            .profile-card {
+                padding: 55px 20px 55px;
+            }
+            
+            .name {
+                font-size: 19px;
+                letter-spacing: 2.3px;
+            }
+            
+            .title {
+                font-size: 11px;
+                letter-spacing: 3.5px;
+            }
+            
+            .divider {
+                margin-bottom: 50px;
+            }
+            
+            .icon-btn {
+                width: 66px;
+                height: 66px;
+                font-size: 24px;
+                border-radius: 20px;
+            }
+            
+            .contact-icons {
+                gap: 30px;
+            }
+            
+            .footer {
+                font-size: 0.55rem;
+                padding: 7px 12px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .profile-card {
+                max-width: 400px;
+                padding: 95px 40px 95px;
+            }
+            
+            .name {
+                font-size: 29px;
+                letter-spacing: 4px;
+                margin-bottom: 12px;
+            }
+            
+            .title {
+                font-size: 15px;
+                letter-spacing: 6px;
+                margin-bottom: 26px;
+            }
+            
+            .divider {
+                margin-bottom: 80px;
+            }
+            
+            .icon-btn {
+                width: 86px;
+                height: 86px;
+                font-size: 32px;
+            }
+            
+            .contact-icons {
+                gap: 52px;
+            }
+            
+            .footer {
+                font-size: 0.7rem;
+                padding: 11px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- خلفية زخرفية -->
+    <div class="bg-decoration">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+    
+    <div class="content-wrapper">
+        <div class="profile-card">
+            <h1 class="name">MAARIYA SHINU</h1>
+            <p class="title">Photographer</p>
+            <div class="divider"></div>
+            
+            <div class="contact-icons">
+                <div class="icon-container">
+                    <button class="icon-btn mail" onclick="window.location.href='mailto:Maariyshinu53@gmail.com'">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <span class="icon-label">Email</span>
+                </div>
+                
+                <div class="icon-container">
+                    <button class="icon-btn instagram" onclick="window.open('https://www.instagram.com/_m.aa._riya?stkn=bDl4cG5ucHllbjQ5', '_blank')">
+                        <i class="fab fa-instagram"></i>
+                    </button>
+                    <span class="icon-label">Instagram</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            website by : <a href="https://alahmryousef-cmd.github.io/yousefalahmr-Bio/" target="_blank">Yousef alahmr</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const decoration = document.querySelector('.bg-decoration');
+            for (let i = 0; i < 12; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 4}s`;
+                decoration.appendChild(sparkle);
+            }
+            
+            const iconContainers = document.querySelectorAll('.icon-container');
+            iconContainers.forEach((container, index) => {
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(15px)';
+                setTimeout(() => {
+                    container.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    container.style.opacity = '1';
+                    container.style.transform = 'translateY(0)';
+                }, 700 + index * 200);
+            });
+        });
+        
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) event.preventDefault();
+        }, { passive: false });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) event.preventDefault();
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
